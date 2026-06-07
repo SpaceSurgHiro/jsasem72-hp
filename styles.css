@@ -70,7 +70,7 @@ img { display: block; max-width: 100%; }
 /* =========================== Hero =========================== */
 .hero { position: relative; height: 100vh; min-height: 680px; color: var(--offwhite); overflow: hidden; }
 .hero__bg { position: absolute; inset: 0; }
-.hero__bg img { width: 100%; height: 100%; object-fit: cover; object-position: center 68%; }
+.hero__bg img { width: 100%; height: 100%; object-fit: cover; object-position: center bottom; }
 .hero__overlay {
   position: absolute; inset: 0;
   background:
