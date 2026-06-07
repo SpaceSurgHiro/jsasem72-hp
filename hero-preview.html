@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JSASEM72 ヒーロー比較プレビュー（分割型・国土地理院航空写真）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .hero-split { display:flex; height:100vh; min-height:700px; overflow:hidden; }
+  .hero-split__text {
+    flex: 1.12; background: linear-gradient(135deg,#0a2142 0%,#0e2a4f 55%,#143a66 100%);
+    color:#fafafa; display:flex; flex-direction:column; justify-content:center;
+    padding: 96px 5.5% 48px; position:relative;
+  }
+  .hero-split__congress { font-size: clamp(18px,2.4vw,32px); font-weight:500; letter-spacing:1.5px; color:rgba(250,250,250,.88); }
+  .hero-split__title { font-family:var(--serif); font-weight:700; font-size: clamp(54px,6.4vw,80px); letter-spacing:6px; line-height:1.08; margin-top:18px; }
+  .hero-split__sub { font-family:var(--serif); font-weight:600; font-size:clamp(20px,2.6vw,30px); letter-spacing:4px; margin-top:6px; }
+  .hero-split__en { font-family:var(--mono); font-weight:700; font-size:clamp(16px,1.7vw,22px); color:var(--gold); margin-top:18px; }
+  .hero-split__story { font-size:clamp(15px,1.4vw,18px); font-weight:500; color:rgba(250,250,250,.9); margin-top:24px; line-height:1.7; }
+  .hero-split__date { font-weight:700; font-size:clamp(16px,1.5vw,22px); margin-top:26px; line-height:1.6; }
+  .hero-split__pres { font-weight:700; font-size:clamp(14px,1.3vw,18px); color:rgba(255,255,255,.88); margin-top:6px; }
+  .hero-split__cta { display:flex; gap:14px; margin-top:30px; flex-wrap:wrap; }
+  .hero-split__cd { display:inline-flex; align-items:baseline; gap:10px; margin-top:26px; padding:12px 18px; border:1px solid rgba(128,208,255,.35); border-radius:14px; background:rgba(11,37,69,.4); width:max-content; }
+  .hero-split__cd .n { font-family:var(--mono); font-weight:700; font-size:30px; color:var(--gold); }
+  .hero-split__cd .t { font-size:13px; color:rgba(250,250,250,.8); }
+  .hero-split__img { flex:0.88; position:relative; }
+  .hero-split__img img { width:100%; height:100%; object-fit:cover; object-position:center; }
+  .hero-split__img::before { content:""; position:absolute; inset:0 auto 0 0; width:140px; background:linear-gradient(90deg,#0a2142,transparent); z-index:2; }
+  .hero-split__credit { position:absolute; bottom:8px; right:10px; z-index:3; font-size:10px; color:rgba(255,255,255,.7); background:rgba(0,0,0,.35); padding:3px 8px; border-radius:6px; }
+  @media (max-width: 900px) {
+    .hero-split { flex-direction:column; height:auto; }
+    .hero-split__img { height:36vh; order:-1; }
+    .hero-split__img::before { display:none; }
+    .hero-split__text { padding:90px 24px 48px; }
+  }
+</style>
+</head>
+<body>
+<header class="header scrolled" id="header">
+  <div class="wrap">
+    <a href="#" class="brand">JSASEM 72</a>
+    <nav class="nav">
+      <a href="#">大会概要</a><a href="#">プログラム</a><a href="#">演題募集</a>
+      <a href="#">参加登録</a><a href="#">アクセス</a><a href="#">協賛</a><a href="#">お問い合わせ</a>
+    </nav>
+    <a href="#" class="header-cta">参加登録</a>
+  </div>
+</header>
+
+<section class="hero-split">
+  <div class="hero-split__text">
+    <p class="hero-split__congress">第72回 日本宇宙航空環境医学会学術大会</p>
+    <h1 class="hero-split__title">宇宙港大分</h1>
+    <p class="hero-split__sub">〜地方から宇宙へ〜</p>
+    <p class="hero-split__en">Spaceport Oita: From Local to Space</p>
+    <p class="hero-split__story">宇宙から帰還する人を、<br>このまちが迎え、医学が支える。</p>
+    <p class="hero-split__date">2026年12月3日（木）– 12月6日（日）<br>会場　J:COMホルトホール大分</p>
+    <p class="hero-split__pres">大会長　徳丸 治（大分大学 福祉健康科学部 教授）</p>
+    <div class="hero-split__cd"><span class="t">開催まであと</span><span class="n">179</span><span class="t">日</span></div>
+    <div class="hero-split__cta">
+      <a href="#" class="btn btn--primary">参加登録</a>
+      <a href="#" class="btn btn--ghost">演題募集</a>
+    </div>
+  </div>
+  <div class="hero-split__img">
+    <img src="assets/hero-aerial.jpg" alt="大分空港 航空写真（国土地理院）">
+    <span class="hero-split__credit">国土地理院 国土画像情報（カラー空中写真）／国土交通省</span>
+  </div>
+</section>
+
+</body>
+</html>
