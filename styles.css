@@ -58,8 +58,8 @@ img { display: block; max-width: 100%; }
 .header .wrap { display: flex; align-items: center; justify-content: space-between; width: 100%; }
 .brand { font-family: var(--mono); font-weight: 700; font-size: 22px; letter-spacing: 3px; color: var(--offwhite); display: inline-flex; align-items: center; gap: 10px; }
 .brand::before {
-  content: ""; width: 30px; height: 30px; flex: 0 0 auto;
-  background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><circle cx='24' cy='24' r='21' fill='none' stroke='%23f5a623' stroke-width='1' opacity='0.55'/><path d='M13.5 33.5 C 20 31.5, 28 26.5, 31 12.5' fill='none' stroke='%23f5a623' stroke-width='3' stroke-linecap='round'/><path d='M10.5 34.4 L16.5 32.8' stroke='%2380d0ff' stroke-width='2.3' stroke-linecap='round'/><circle cx='12.4' cy='34.6' r='1.8' fill='%2380d0ff'/><path d='M31 8.5 l1.15 2.7 2.7 1.15 -2.7 1.15 -1.15 2.7 -1.15 -2.7 -2.7 -1.15 2.7 -1.15 Z' fill='%23fafafa'/></svg>") center / contain no-repeat;
+  content: ""; width: 32px; height: 32px; flex: 0 0 auto;
+  background: url("assets/logo-mark.svg") center / contain no-repeat;
 }
 .nav { display: flex; gap: 28px; }
 .nav a { color: var(--offwhite); font-size: 14px; font-weight: 500; opacity: .92; transition: color .2s; }
