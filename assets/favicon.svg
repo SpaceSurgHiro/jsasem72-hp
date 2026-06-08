@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="J72 OITA">
+  <defs>
+    <radialGradient id="j72disc" cx="38%" cy="28%" r="80%">
+      <stop offset="0%" stop-color="#21528c"/>
+      <stop offset="52%" stop-color="#112f54"/>
+      <stop offset="100%" stop-color="#071c38"/>
+    </radialGradient>
+    <linearGradient id="j72ring" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffd884"/>
+      <stop offset="48%" stop-color="#f5a623"/>
+      <stop offset="100%" stop-color="#bd7c0d"/>
+    </linearGradient>
+    <radialGradient id="j72gloss" cx="50%" cy="16%" r="58%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.40"/>
+      <stop offset="70%" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="j72shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="0" dy="1" stdDeviation="0.9" flood-color="#000000" flood-opacity="0.45"/>
+    </filter>
+  </defs>
+  <circle cx="32" cy="33.2" r="31" fill="#04132a" opacity="0.55"/>
+  <circle cx="32" cy="32" r="31" fill="url(#j72disc)"/>
+  <ellipse cx="32" cy="20" rx="26" ry="17" fill="url(#j72gloss)"/>
+  <circle cx="32" cy="32" r="30.2" fill="none" stroke="#7fb0e6" stroke-width="0.8" opacity="0.35"/>
+  <circle cx="32" cy="32" r="27.5" fill="none" stroke="#000000" stroke-width="2.4" opacity="0.28"/>
+  <circle cx="32" cy="32" r="27.5" fill="none" stroke="url(#j72ring)" stroke-width="1.7" filter="url(#j72shadow)"/>
+  <text x="32" y="27.6" text-anchor="middle" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="18.5" letter-spacing="0.5" fill="#7a4f08" opacity="0.55">J72</text>
+  <text x="32" y="26.4" text-anchor="middle" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="18.5" letter-spacing="0.5" fill="url(#j72ring)" filter="url(#j72shadow)">J72</text>
+  <line x1="22" y1="36.5" x2="42" y2="36.5" stroke="url(#j72ring)" stroke-width="1" opacity="0.7"/>
+  <text x="32.2" y="43.8" text-anchor="middle" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="8" letter-spacing="2.6" fill="#06182f" opacity="0.5">OITA</text>
+  <text x="32" y="42.8" text-anchor="middle" dominant-baseline="central" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="8" letter-spacing="2.6" fill="#cfe6fb">OITA</text>
+</svg>
