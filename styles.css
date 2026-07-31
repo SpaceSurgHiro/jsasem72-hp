@@ -286,3 +286,31 @@ img { display: block; max-width: 100%; }
   .dtable { font-size: 14px; table-layout: fixed; }
   .dtable th, .dtable td { padding: 10px 12px; width: auto !important; white-space: normal; word-break: break-word; }
 }
+
+/* ===== タイムテーブル（会場別グリッド） ===== */
+.tt-wrap { margin: 8px 0 28px; }
+.tt-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+.tt { width: 100%; min-width: 760px; border-collapse: collapse; font-size: 14px; }
+.tt th, .tt td { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 10px 12px; vertical-align: top; text-align: left; }
+.tt tr > *:last-child { border-right: 0; }
+.tt tbody tr:last-child > * { border-bottom: 0; }
+.tt thead th { background: var(--navy); color: #fff; font-weight: 600; letter-spacing: .5px; text-align: center; white-space: nowrap; }
+.tt .t { width: 76px; font-family: var(--mono); font-weight: 600; color: var(--gold); white-space: nowrap; text-align: center; background: #f6f8fc; font-variant-numeric: tabular-nums; }
+.tt td.ev { background: #fff; }
+.tt td.ev.hi { background: #fff8ea; box-shadow: inset 3px 0 0 var(--gold); }
+.tt td.ev.sub { background: #f4f8fd; box-shadow: inset 3px 0 0 var(--sky); }
+.tt .nm { font-weight: 600; line-height: 1.5; }
+.tt .no { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: .5px; display: block; }
+.tt .cap { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; line-height: 1.5; font-weight: 400; }
+.tt-hint { display: none; color: var(--muted); font-size: 12.5px; margin: 8px 2px 0; }
+@media (max-width: 860px) {
+  .tt-hint { display: block; }
+  .tt { font-size: 13px; }
+  .tt th, .tt td { padding: 8px 10px; }
+}
+/* 列幅バランス（3会場の日） */
+#tt-day1 thead th:nth-child(2), #tt-day2 thead th:nth-child(2) { width: 42%; }
+#tt-day1 thead th:nth-child(3), #tt-day2 thead th:nth-child(3) { width: 29%; }
+#tt-day1 thead th:nth-child(4), #tt-day2 thead th:nth-child(4) { width: 29%; }
+/* アンカー移動時に固定ヘッダーで見出しが隠れないように */
+.page h3[id], .page [id^="day"] { scroll-margin-top: 104px; }
