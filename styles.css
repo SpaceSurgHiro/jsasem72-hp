@@ -130,7 +130,8 @@ img { display: block; max-width: 100%; }
 
 /* =========================== Greeting =========================== */
 .greet { display: grid; grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
-.greet__photo { width: 280px; height: 360px; border-radius: 14px; background: linear-gradient(135deg, var(--navy), var(--navy-2)); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,.5); font-size: 14px; border: 1px solid var(--line); }
+.greet__photo { display: block; width: 280px; aspect-ratio: 199 / 248; height: auto; object-fit: cover; object-position: 50% 22%; border-radius: 14px; background: linear-gradient(135deg, var(--navy), var(--navy-2)); border: 1px solid var(--line); }
+.greet__cap { width: 280px; margin-top: 10px; font-size: 13px; color: var(--muted); text-align: center; }
 .greet__body p { font-size: 16px; margin-bottom: 18px; }
 .greet__sign { font-weight: 700; color: var(--navy); font-size: 20px; margin-top: 24px; }
 .greet__role { color: var(--muted); font-size: 14px; }
@@ -175,6 +176,9 @@ img { display: block; max-width: 100%; }
 .tier .t::before { content:""; width:10px; height:10px; border-radius:50%; background: var(--gold); }
 .logos { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
 .logo-ph { height: 72px; border: 1px dashed #c7d0de; border-radius: 10px; background:#fff; display:flex; align-items:center; justify-content:center; color:#aeb8c7; font-size:13px; }
+.sponsor-open { border: 1px dashed #c7d0de; border-radius: 14px; background: #fff; padding: 40px 28px; text-align: center; }
+.sponsor-open__badge { display: inline-block; font-weight: 700; color: var(--navy); font-size: 18px; letter-spacing: .04em; padding-bottom: 12px; border-bottom: 2px solid var(--gold); margin-bottom: 18px; }
+.sponsor-open p { color: var(--muted); font-size: 15px; max-width: 640px; margin: 0 auto; }
 
 /* =========================== News =========================== */
 .news-list { display: flex; flex-direction: column; }
@@ -344,4 +348,11 @@ img { display: block; max-width: 100%; }
   .tt { font-size: 13px; }
   .tt .nm { font-size: 12.5px; }
   .tt td.s { padding: 6px 8px 7px 10px; }
+}
+
+/* 9項目になったナビの詰まり対策（デスクトップ〜タブレット横） */
+@media (max-width: 1180px) and (min-width: 901px) {
+  .nav { gap: 15px; }
+  .nav a { font-size: 13px; }
+  .header-cta { padding: 9px 16px; font-size: 13px; }
 }
