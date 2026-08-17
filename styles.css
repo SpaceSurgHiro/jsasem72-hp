@@ -99,6 +99,9 @@ img { display: block; max-width: 100%; }
 .btn:hover { transform: translateY(-2px); }
 .btn--primary { background: var(--gold); color: var(--navy); box-shadow: 0 4px 12px rgba(245,166,35,.35); }
 .btn--ghost { border: 1px solid #fff; color: #fff; }
+/* 明るい背景の上で使う枠線ボタン（.btn--ghost はヒーロー等の暗い面専用） */
+.btn--outline { border: 1.5px solid var(--navy); color: var(--navy); background: #fff; }
+.btn--outline:hover { background: var(--navy); color: #fff; }
 
 /* Countdown card */
 .countdown {
