@@ -130,7 +130,7 @@ img { display: block; max-width: 100%; }
 
 /* =========================== Greeting =========================== */
 .greet { display: grid; grid-template-columns: 300px 1fr; gap: 48px; align-items: start; }
-.greet__photo { display: block; width: 280px; aspect-ratio: 199 / 248; height: auto; object-fit: cover; object-position: 50% 22%; border-radius: 14px; background: linear-gradient(135deg, var(--navy), var(--navy-2)); border: 1px solid var(--line); }
+.greet__photo { display: block; width: 280px; aspect-ratio: 4 / 5; height: auto; object-fit: cover; object-position: 50% 50%; border-radius: 14px; background: linear-gradient(135deg, var(--navy), var(--navy-2)); border: 1px solid var(--line); }
 .greet__cap { width: 280px; margin-top: 10px; font-size: 13px; color: var(--muted); text-align: center; }
 .greet__body p { font-size: 16px; margin-bottom: 18px; }
 .greet__sign { font-weight: 700; color: var(--navy); font-size: 20px; margin-top: 24px; }
