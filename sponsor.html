@@ -47,13 +47,35 @@
     </div>
 
     <h3 class="prose">ご協賛の区分と特典</h3>
-    <!-- 2026-08-18：参加費確定に伴い、協賛区分と特典を再検討中のため一時非表示（大会長のご指示）。
-         確定後に表を復帰させる。旧版は git 履歴（commit 8e08db4 以前）を参照。 -->
-    <div class="sponsor-open">
-      <div class="sponsor-open__badge">協賛区分と特典は現在調整中です</div>
-      <p>ご協賛の区分・金額・特典につきましては、確定し次第、本ページにて速やかにご案内いたします。<br>
-      お急ぎの場合、また個別のご相談につきましては、大会事務局まで直接お問い合わせください。</p>
-    </div>
+    <!-- 2026-08-18：大会長のご判断により、特典を「大会参加証」から「業者用入構証」に改めた。
+         参加費（会員15,000円）と協賛額との逆ざやを解消するための整理。金額は据え置き。
+         2026-09-09：寄付金の特典に「机1台」を明記し、「展示ブース」として整理した。
+         実態としては従来から机を含めて運用しており、記載が抜けていたもの。
+         協賛趣意書（2026年9月改訂版）および岐阜医療科学大学・田中先生への回答と表記を揃えている。
+         9/10 の実行委員会で確認のうえ main へ公開すること。
+         2026-09-10：第6回実行委員会で「入館証」を「入構証」に改め、学会参加証ではないため認定医の
+         参加ポイントは加算されない旨を明記することが決まった（協賛趣意書と表記を揃える）。 -->
+    <table class="dtable">
+      <thead><tr><th style="width:190px">区分</th><th style="width:150px">金額・口数</th><th>特典</th></tr></thead>
+      <tbody>
+        <tr>
+          <td>寄付金</td>
+          <td>1口 50,000円</td>
+          <td>・展示ブース（机1台・ポスター展示パネル A0 2枚まで）<span style="color:var(--muted)">＝第1会場（大会議室）内に設置</span><br>・業者用入構証 3枚<span style="color:var(--muted)">（必要に応じて追加発行いたします）</span><br>・抄録集（大会ホームページ上で公開するPDF）への広告掲載（A4判 1ページ）</td>
+        </tr>
+        <tr>
+          <td>ランチョン協力</td>
+          <td>1口 10,000円</td>
+          <td>・業者用入構証 1枚<br>・昼食配布時に第1会場でのチラシ等の配布<br>・第1会場内のパネル展示（A0 1枚）<br>・抄録集（大会ホームページ上で公開するPDF）への広告掲載（A4判 半ページ）</td>
+        </tr>
+        <tr>
+          <td>ネームホルダー<br>ストラップ</td>
+          <td>1口 100本以上<br><span style="color:var(--muted)">（現物のご提供）</span></td>
+          <td>・業者用入構証 1枚<br>・抄録集（大会ホームページ上で公開するPDF）への広告掲載（A4判 半ページ）</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="callout"><strong>業者用入構証について：</strong>ご協賛企業・団体のご担当者様にお渡しする入構証です。講演会場へのご入場を制限するものではございませんので、会期中は各セッションを自由にご聴講いただけます。学術参加者としてのご登録（参加費のお支払い）とは別のお取扱いとなりますので、認定医の資格更新に必要な参加ポイントは加算されません。</div>
     <div class="prose" style="margin-top:32px">
       <ul>
         <li><strong>募集期間：2026年10月31日（土）締切</strong></li>
@@ -66,9 +88,19 @@
     <div class="callout"><strong>協賛趣意書をご用意しております。</strong>お申し込み方法・お振込先を記載しておりますので、ご関心をお寄せいただける場合は、お気軽に大会事務局までお問い合わせください。</div>
 
     <h3 class="prose">現在の協賛・連携</h3>
+    <!-- 2026-09-18：株式会社ディック学園／エデュパーク大分校（教育パートナー）と宇宙ごはん研究会（連携団体）の
+         ロゴを掲載。表記・ロゴ・リンク先はいずれも先方からメールでご指定いただいたもの（原本は Dropbox の 協賛/ に保管）。
+         宇宙ごはん研究会は第2回実行委員会の決定により出展料をいただかない学生団体のため、寄付の区分ではなく
+         「連携団体」として別枠にしている。ロゴを掲載する区分では「Coming Soon」の空枠を置かない。 -->
     <div class="tier"><div class="t">寄付</div><div class="logos"><div class="logo-ph">Coming Soon</div><div class="logo-ph">Coming Soon</div><div class="logo-ph">Coming Soon</div><div class="logo-ph">Coming Soon</div></div></div>
     <div class="tier"><div class="t">ランチョンセミナー</div><div class="logos"><div class="logo-ph">Coming Soon</div><div class="logo-ph">Coming Soon</div><div class="logo-ph">Coming Soon</div><div class="logo-ph">Coming Soon</div></div></div>
-    <div class="tier"><div class="t">教育パートナー</div><div class="logos"><div class="logo-ph">Coming Soon</div><div class="logo-ph">Coming Soon</div><div class="logo-ph">Coming Soon</div><div class="logo-ph">Coming Soon</div></div></div>
+    <div class="tier"><div class="t">教育パートナー</div><div class="logos">
+      <a class="logo-card" href="https://www.d-gakuen.co.jp/" target="_blank" rel="noopener"><img src="assets/sponsors/dic-gakuen.png" alt="株式会社ディック学園"><span class="nm">株式会社ディック学園</span></a>
+      <a class="logo-card" href="https://www.edupark-oita.jp/" target="_blank" rel="noopener"><img src="assets/sponsors/edupark-oita.png" alt="エデュパーク大分校"><span class="nm">エデュパーク大分校</span></a>
+    </div></div>
+    <div class="tier"><div class="t">連携団体</div><div class="logos">
+      <a class="logo-card" href="https://utyuugohan.jimdofree.com/" target="_blank" rel="noopener"><img src="assets/sponsors/utyuugohan.png" alt="宇宙ごはん研究会"><span class="nm">宇宙ごはん研究会</span></a>
+    </div></div>
 
     <div class="cta-band">
       <h3>ご協賛のご相談</h3>
