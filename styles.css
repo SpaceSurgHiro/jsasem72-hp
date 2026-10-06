@@ -386,3 +386,16 @@ img { display: block; max-width: 100%; }
 .footer-host:hover span { text-decoration: underline; }
 .inline-logo { height: 30px; width: auto; vertical-align: middle; margin-right: 8px; }
 @media (max-width: 640px) { .hero__host img { height: 50px; } .hero__host .en { display: none; } .society-mark img { height: 48px; } }
+
+/* ---- PC表示：ヒーロー先頭（学会ロゴ）が固定ヘッダー(80px)に隠れないよう上余白を確保。内容が収まらない場合はヒーローを伸ばして切れないようにする 2026-10-06 ---- */
+@media (min-width: 641px) {
+  .hero { height: auto; min-height: 100vh; }
+  .hero__inner { height: auto; min-height: 100vh; padding-top: 104px; padding-bottom: 48px; }
+}
+/* 高さの低いPC画面では縦の余白をやや詰める */
+@media (min-width: 641px) and (max-height: 820px) {
+  .hero__host { margin-bottom: 18px; }
+  .hero__story { margin-top: 18px; }
+  .hero__date { margin-top: 20px; }
+  .hero__cta { margin-top: 26px; }
+}
