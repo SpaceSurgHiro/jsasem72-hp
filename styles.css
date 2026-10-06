@@ -372,17 +372,17 @@ img { display: block; max-width: 100%; }
   .header-cta { padding: 9px 16px; font-size: 13px; }
 }
 
-/* ---- 学会ロゴ（主催：日本宇宙航空環境医学会）2026-10-05 ---- */
-.hero__host { display: inline-flex; align-items: center; gap: 12px; width: max-content; max-width: 100%; margin-bottom: 22px; padding: 8px 16px 8px 10px; background: rgba(255,255,255,.94); border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,.22); }
-.hero__host img { height: 46px; width: auto; display: block; }
-.hero__host .nm { display: block; font-size: 13px; font-weight: 700; letter-spacing: .4px; line-height: 1.25; color: #1f3b90; }
-.hero__host .en { display: block; font-size: 10px; font-weight: 600; letter-spacing: .3px; color: #4a5b7a; margin-top: 2px; }
-.society-mark { display: flex; align-items: center; gap: 14px; width: max-content; max-width: 100%; margin-bottom: 22px; padding: 10px 16px 10px 12px; background: #fff; border: 1px solid var(--line); border-radius: 12px; }
-.society-mark img { height: 54px; width: auto; display: block; }
+/* ---- 学会ロゴ（主催：日本宇宙航空環境医学会）2026-10-05、10-06 背景色・透過に変更 ---- */
+.hero__host { display: inline-flex; align-items: center; gap: 14px; width: max-content; max-width: 100%; margin-bottom: 26px; }
+.hero__host img { height: 62px; width: auto; display: block; filter: drop-shadow(0 2px 8px rgba(0,0,0,.35)); }
+.hero__host .nm { display: block; font-size: 14px; font-weight: 700; letter-spacing: .6px; line-height: 1.3; color: rgba(250,250,250,.95); text-shadow: 0 1px 6px rgba(0,0,0,.4); }
+.hero__host .en { display: block; font-size: 10.5px; font-weight: 600; letter-spacing: .4px; color: rgba(210,225,245,.85); margin-top: 3px; text-shadow: 0 1px 6px rgba(0,0,0,.4); }
+.society-mark { display: flex; align-items: center; gap: 16px; width: max-content; max-width: 100%; margin-bottom: 24px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
+.society-mark img { height: 60px; width: auto; display: block; }
 .society-mark .nm { display: block; font-weight: 700; color: var(--navy); font-size: 15px; line-height: 1.3; }
 .society-mark .en { display: block; font-size: 11px; color: var(--muted); font-weight: 500; margin-top: 2px; }
-.footer-host { display: inline-flex; align-items: center; gap: 10px; margin: -4px 0 18px; padding: 8px 12px 8px 8px; background: #fff; border: 1px solid var(--line); border-radius: 10px; color: var(--navy); text-decoration: none; font-size: 13px; font-weight: 600; line-height: 1.3; }
-.footer-host img { height: 38px; width: auto; display: block; }
-.footer-host:hover { border-color: var(--navy); }
-.inline-logo { height: 28px; width: auto; vertical-align: middle; margin-right: 8px; }
-@media (max-width: 640px) { .hero__host img { height: 38px; } .hero__host .en { display: none; } .society-mark img { height: 44px; } }
+.footer-host { display: inline-flex; align-items: center; gap: 12px; margin: -4px 0 20px; color: rgba(250,250,250,.9); text-decoration: none; font-size: 13px; font-weight: 600; line-height: 1.3; }
+.footer-host img { height: 44px; width: auto; display: block; }
+.footer-host:hover span { text-decoration: underline; }
+.inline-logo { height: 30px; width: auto; vertical-align: middle; margin-right: 8px; }
+@media (max-width: 640px) { .hero__host img { height: 50px; } .hero__host .en { display: none; } .society-mark img { height: 48px; } }
