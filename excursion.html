@@ -44,6 +44,8 @@
   <div class="wrap">
     <!-- 2026-10-29：大分県（空港見学の手配元）のご指示と県作成の資料（2枚）に基づいて新設。
          ツアーの説明は県の承認文言「制限区域内から、飛行機の離発着を見学します」に限ること。
+         2026-10-30：受付開始は 11/2（月）正午（徳丸先生のご提案、河野先生から会員に事前周知）。
+         申込ボタンは main.js が開始時刻に有効化する（フォーム側は Apps Script の openAtStart で開く）。
          2026-10-30：参加無料（柿本さん 10/29）を追記。空港での行程・見学予定の便は、
          安全保障上の理由で HP に載せない（徳丸先生 10/29）。参加者にのみ別途知らせる。 -->
     <div class="prose">
@@ -60,6 +62,7 @@
         <tr><th>対象</th><td>第72回 日本宇宙航空環境医学会大会の参加者</td></tr>
         <tr><th>参加費</th><td>無料</td></tr>
         <tr><th>定員</th><td>40名（先着順）</td></tr>
+        <tr><th>受付開始</th><td><strong>2026年11月2日（月）正午</strong></td></tr>
         <tr><th>申込締切</th><td><strong>2026年11月27日（金）正午</strong><br><span style="color:var(--muted);font-size:.92em">ただし、定員に達し次第、これより前に締め切る場合があります。</span></td></tr>
       </tbody>
     </table>
@@ -80,10 +83,10 @@
 
     <h3 class="prose" id="apply">お申し込み</h3>
     <div class="prose">
-      <p>下のフォームからお申し込みください（先着順・定員40名）。</p>
+      <p>受付は<strong>2026年11月2日（月）正午</strong>に開始します。開始後は、下のボタンからフォームを開いてお申し込みください（先着順・定員40名）。</p>
     </div>
-    <p style="margin:8px 0 10px"><a class="btn btn--primary" href="https://forms.gle/AVG19DYvRKqx6kaq6" target="_blank" rel="noopener">お申し込みフォームを開く</a></p>
-    <p style="color:var(--muted);font-size:13px;margin-bottom:28px">※ Googleフォームが別のタブで開きます。送信後、ご記入のメールアドレスに受付のご連絡が届きます。</p>
+    <p style="margin:8px 0 10px"><a class="btn btn--primary is-closed" data-excursion-open="https://forms.gle/AVG19DYvRKqx6kaq6" data-open-label="お申し込みフォームを開く" role="link" aria-disabled="true">11月2日（月）正午 受付開始</a></p>
+    <p style="color:var(--muted);font-size:13px;margin-bottom:28px">※ 受付開始の時刻になると、ボタンからお申し込みいただけるようになります（ページを再読み込みしてください）。Googleフォームが別のタブで開きます。送信後、ご記入のメールアドレスに受付のご連絡が届きます。</p>
 
     <div class="prose">
       <p>フォームでは、次の項目をご記入いただきます。</p>

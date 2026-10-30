@@ -102,6 +102,7 @@ img { display: block; max-width: 100%; }
 /* 明るい背景の上で使う枠線ボタン（.btn--ghost はヒーロー等の暗い面専用） */
 .btn--outline { border: 1.5px solid var(--navy); color: var(--navy); background: #fff; }
 .btn--outline:hover { background: var(--navy); color: #fff; }
+.btn.is-closed { background: #dfe4ec; color: var(--muted); box-shadow: none; cursor: not-allowed; pointer-events: none; }
 
 /* Countdown card */
 .countdown {
