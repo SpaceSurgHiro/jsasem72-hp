@@ -271,6 +271,43 @@ img { display: block; max-width: 100%; }
 .form input:focus, .form select:focus, .form textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(245,166,35,.15); }
 .form textarea { min-height: 140px; resize: vertical; }
 
+/* 参加登録の申込フォーム（register-form.html。2026-11-06 追加） */
+/* hidden 属性の要素は、.form .row などの display 指定より優先して隠す */
+[hidden] { display: none !important; }
+.reg-form { max-width: 720px; }
+.reg-form label .opt { color: var(--muted); font-size: 12px; font-weight: 400; margin-left: 6px; }
+.reg-form .reg-help { color: var(--muted); font-size: 13px; }
+.reg-form textarea { min-height: 90px; }
+.reg-choices { border: 0; padding: 0; margin: 0; gap: 10px; }
+.reg-choices legend { font-weight: 600; color: var(--navy); font-size: 14px; margin-bottom: 8px; padding: 0; }
+.reg-choices legend .req { color:#d8472b; font-size: 12px; margin-left: 6px; }
+.reg-choice { display: flex !important; align-items: center; gap: 10px; background:#fff; border:1px solid var(--line); border-radius: 10px; padding: 12px 14px; cursor: pointer; font-weight: 400 !important; color: var(--ink) !important; font-size: 15px !important; }
+.reg-choice:hover { border-color: var(--gold); }
+.reg-choice input { width: auto !important; margin: 0; accent-color: var(--navy); }
+.reg-choice b { color: var(--navy); }
+.reg-note { margin: -6px 0 0; font-size: 14px; color: var(--navy); background:#fdf6e0; border-radius: 8px; padding: 10px 14px; }
+.reg-fee { background: #f4f7fb; border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; font-size: 14px; line-height: 1.8; }
+.reg-fee strong { font-size: 17px; color: var(--navy); }
+.reg-consent { background:#fff; border:1px solid var(--line); border-radius: 12px; padding: 18px 20px; font-size: 13.5px; line-height: 1.8; max-height: none; }
+.reg-consent h4 { font-size: 14px; color: var(--navy); margin: 4px 0 6px; }
+.reg-consent h4 + p { margin-top: 0; }
+.reg-consent p, .reg-consent ul { margin: 0 0 8px; }
+.reg-consent ul { padding-left: 1.4em; }
+.reg-consent a { color: var(--navy); text-decoration: underline; }
+.reg-agree { display: flex !important; gap: 10px; align-items: flex-start; margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); font-size: 14.5px !important; cursor: pointer; }
+.reg-agree input { width: auto !important; margin-top: 5px; accent-color: var(--navy); }
+.reg-agree .req { color:#d8472b; font-size: 12px; margin-left: 6px; }
+.reg-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.reg-status { border-radius: 10px; padding: 14px 16px; font-size: 14.5px; line-height: 1.8; }
+.reg-status--info { background:#eaf4fd; color: var(--navy); }
+.reg-status--error { background:#fdecea; color:#8a1f11; }
+.reg-status--success { background:#e8f7f1; color:#11613f; }
+.reg-actions .btn[disabled] { opacity: .5; cursor: not-allowed; }
+.reg-result h3 { margin-top: 0; }
+.reg-result__id { font-size: 17px; }
+.reg-result__id b { font-family: var(--mono); letter-spacing: 1px; color: var(--navy); }
+.req-mark { color:#d8472b; }
+
 /* CTAバンド */
 .cta-band { background: var(--navy); border-radius: 18px; padding: 48px; text-align: center; color:#fff; margin: 12px 0; position: relative; overflow: hidden; }
 .cta-band::before { content:""; position:absolute; top:0; left:0; right:0; height:4px; background: linear-gradient(90deg, var(--gold), var(--sky)); }

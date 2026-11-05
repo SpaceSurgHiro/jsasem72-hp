@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>参加登録のお申し込み ｜ 第72回 日本宇宙航空環境医学会大会</title>
+<meta name="description" content="第72回 日本宇宙航空環境医学会大会の参加登録の申込フォーム（クレジットカード決済）。">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="styles.css?v=20261106">
+</head>
+<body>
+
+<header class="header header--solid" id="header">
+  <div class="wrap">
+    <a href="index.html" class="brand"><span class="brand-text"><span class="brand-wm">JSASEM <b>72</b></span><span class="brand-tag">SPACEPORT OITA · 2026</span></span></a>
+    <nav class="nav" id="nav">
+      <a href="about.html">大会概要</a>
+      <a href="greeting.html">大会長挨拶</a>
+      <a href="program.html">プログラム</a>
+      <a href="abstract.html">演題募集</a>
+      <a href="register.html">参加登録</a>
+      <a href="access.html">アクセス</a>
+      <a href="sponsor.html">協賛</a>
+      <a href="news.html">お知らせ</a>
+      <a href="contact.html">お問い合わせ</a>
+    </nav>
+    <a href="register.html" class="header-cta">参加登録</a>
+    <button class="burger" id="burger" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="subhero">
+  <div class="wrap">
+    <span class="en">Registration Form</span>
+    <h1>参加登録のお申し込み</h1>
+    <nav class="breadcrumb"><a href="index.html">ホーム</a><span>›</span><a href="register.html">参加登録</a><span>›</span>お申し込み</nav>
+  </div>
+</section>
+
+<main class="page">
+  <div class="wrap">
+    <!-- 2026-11-06：ゼウス「学会PAY」（リンク（画面遷移）型・セッション発行方式）で決済する申込フォーム。
+         テストのあいだは register.html からリンクせず、検索エンジンにも載せない（noindex）。
+         設定は assets/register-config.js（送信先の Apps Script の URL・テスト表示）。
+         動作は assets/register-form.js。参加費の正しい金額は Apps Script 側の表で決まる
+         （ここの表示を変えるときは、Apps Script の FEES も必ず同じに直すこと）。 -->
+    <div class="status-banner" id="reg-test-banner" hidden>
+      <span class="status-banner__badge">テスト中</span>
+      <div class="status-banner__body">
+        <strong class="status-banner__ttl">このページは、決済の動作確認のためのテスト用ページです</strong>
+        参加登録の受付は、まだ開始しておりません。受付開始のご案内は、<a href="register.html">参加登録</a>のページと<a href="news.html">お知らせ</a>に掲載いたします。
+      </div>
+    </div>
+
+    <div class="callout" id="reg-not-ready" hidden><strong>ただいま準備中です。</strong>お申し込みの受付を開始するまで、送信はできません。</div>
+
+    <div class="prose">
+      <p class="lead">必要事項を入力して、お申し込みください。参加費のある区分の方は、続けて決済代行会社（株式会社ゼウス）の画面でクレジットカードのお支払いをしていただきます。カード番号は本大会のサイトを通らず、ゼウスの画面に直接入力します。</p>
+      <p style="font-size:14px;color:var(--muted)">参加費や当日のご案内は、<a href="register.html" style="color:var(--navy);text-decoration:underline">参加登録</a>のページをご覧ください。<span class="req-mark">＊</span>は必須項目です。</p>
+    </div>
+
+    <form class="form reg-form" id="reg-form" novalidate autocomplete="on">
+      <fieldset class="row reg-choices">
+        <legend>参加区分<span class="req">必須</span></legend>
+        <label class="reg-choice"><input type="radio" name="category" value="MEMBER"> <span><b>会員</b>　15,000円</span></label>
+        <label class="reg-choice"><input type="radio" name="category" value="NONMEMBER"> <span><b>非会員</b>　17,000円</span></label>
+        <label class="reg-choice"><input type="radio" name="category" value="COMED"> <span><b>研修医・コメディカル</b>　7,000円</span></label>
+        <label class="reg-choice"><input type="radio" name="category" value="STUDENT"> <span><b>学生（小学生〜大学院生）</b>　無料</span></label>
+      </fieldset>
+      <p class="reg-note" id="reg-student-note" hidden>学生の方は、お支払いはありません。大会当日、受付で学生証をご提示ください。</p>
+
+      <div class="row"><label for="f-name">お名前<span class="req">必須</span></label><input id="f-name" name="name" type="text" maxlength="40" autocomplete="name" placeholder="例：大分 太郎"></div>
+      <div class="row"><label for="f-kana">ふりがな<span class="req">必須</span></label><input id="f-kana" name="kana" type="text" maxlength="40" placeholder="例：おおいた たろう"></div>
+      <div class="row"><label for="f-aff">ご所属<span class="req">必須</span></label><input id="f-aff" name="affiliation" type="text" maxlength="80" autocomplete="organization" placeholder="例：大分大学 医学部（学生の方は学校名）"><small class="reg-help">参加証にお名前とあわせて印刷します。</small></div>
+      <div class="row" id="row-memberno" hidden><label for="f-mno">会員番号<span class="opt">任意</span></label><input id="f-mno" name="memberNo" type="text" maxlength="12" inputmode="numeric" placeholder="わからない場合は空欄で構いません"></div>
+      <div class="row"><label for="f-email">メールアドレス<span class="req">必須</span></label><input id="f-email" name="email" type="email" maxlength="50" autocomplete="email" inputmode="email" placeholder="例：taro@example.ac.jp"><small class="reg-help">登録完了のお知らせ（登録番号・QRコード入り）をお送りします。</small></div>
+      <div class="row"><label for="f-email2">メールアドレス（確認用）<span class="req">必須</span></label><input id="f-email2" name="email2" type="email" maxlength="50" autocomplete="email" inputmode="email"></div>
+      <div class="row"><label for="f-phone">電話番号<span class="req">必須</span></label><input id="f-phone" name="phone" type="tel" maxlength="20" autocomplete="tel" inputmode="tel" placeholder="例：090-1234-5678"><small class="reg-help">ご登録内容の確認で、ご連絡する場合があります。</small></div>
+      <div class="row"><label for="f-receipt">領収書の宛名<span class="opt">任意</span></label><input id="f-receipt" name="receiptName" type="text" maxlength="60" placeholder="空欄の場合は、お名前で作成します"></div>
+      <div class="row"><label for="f-note">連絡事項<span class="opt">任意</span></label><textarea id="f-note" name="note" maxlength="200" rows="3" placeholder="事務局へのご連絡があればご記入ください"></textarea></div>
+      <div class="reg-hp" aria-hidden="true"><label>この欄は空のままにしてください<input type="text" name="hp_field" tabindex="-1" autocomplete="off"></label></div>
+
+      <div class="reg-fee" id="reg-fee" aria-live="polite"></div>
+
+      <div class="reg-consent">
+        <h4>個人情報の第三者提供について（クレジットカードでお支払いの場合）</h4>
+        <p>本大会がお申し込みの方から取得した以下の個人情報等は、カード発行会社が行う不正利用の検知・防止のために、お申し込みの方が利用されているカードの発行会社へ提供させていただきます。</p>
+        <p>氏名、電話番号、メールアドレス、インターネット利用環境に関する情報等</p>
+        <p>お申し込みの方が利用されているカード発行会社が外国にある場合、これらの情報は当該発行会社が所属する国に移転される場合があります。本大会では、お申し込みの方から取得した情報からは、ご利用のカード発行会社および当該会社が所在する国を特定することができないため、以下の個人情報保護措置に関する情報を把握してご提供することはできません。</p>
+        <ul>
+          <li>提供先が所在する外国の名称</li>
+          <li>当該国の個人情報保護制度に関する情報</li>
+          <li>発行会社の個人情報保護の措置</li>
+        </ul>
+        <p>なお、個人情報保護委員会のホームページ（<a href="https://www.ppc.go.jp/" target="_blank" rel="noopener">https://www.ppc.go.jp/</a>）では、各国における個人情報保護制度に関する情報が掲載されています。お申し込みの方が未成年の場合は、親権者または後見人の承諾を得たうえでお申し込みください。</p>
+        <h4>キャンセル・返金について</h4>
+        <p>お支払い手続きの完了後は、参加費の返金はいたしかねます。本大会が中止となった場合は、お支払いいただいた参加費の全額を返金いたします（詳しくは<a href="tokusho.html" target="_blank" rel="noopener">特定商取引法に基づく表記</a>をご覧ください）。</p>
+        <label class="reg-agree"><input type="checkbox" name="consent" value="yes"> <span>上記の内容と、<a href="privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に同意します<span class="req">必須</span></span></label>
+      </div>
+
+      <div class="reg-status" id="reg-status" role="status" hidden></div>
+      <div class="reg-actions"><button type="submit" class="btn btn--primary" id="reg-submit">入力内容を確認する</button></div>
+    </form>
+
+    <!-- ゼウスの決済画面へ移るためのフォーム（中身は register-form.js が入れる）。iframe で開かないこと（ゼウスの指定）。 -->
+    <form id="zeus-form" method="post" action="https://linkpt.cardservice.co.jp/cgi-bin/credit/order.cgi" accept-charset="UTF-8" hidden>
+      <input type="hidden" name="clientip" value="">
+      <input type="hidden" name="act" value="order">
+      <input type="hidden" name="sid" value="">
+    </form>
+
+    <div class="callout callout--navy" style="margin-top:28px"><strong>お困りのときは：</strong>入力やお支払いでご不明な点は、大会事務局（<a href="mailto:jsasem72.office@gmail.com">jsasem72.office@gmail.com</a>）までお問い合わせください。</div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <img class="footer-lockup" src="assets/logo-lockup-navy.svg" alt="JSASEM 72 ｜ Spaceport Oita 2026">
+        <a class="footer-host" href="http://jsasem.kenkyuukai.jp/" target="_blank" rel="noopener"><img src="assets/jsasem-logo-dark.svg" alt="日本宇宙航空環境医学会"><span>主催　一般社団法人 日本宇宙航空環境医学会</span></a>
+        <h4>第72回 日本宇宙航空環境医学会大会</h4>
+        <p class="en">The 72nd Annual Meeting of the Japan Society of Aerospace and Environmental Medicine</p>
+        <p style="margin-top:16px;font-size:14px">大会長：徳丸 治／実行委員長：中沼 寛明<br>Mail：jsasem72.office@gmail.com</p>
+      </div>
+      <div>
+        <div class="ft">サイトマップ</div>
+        <ul>
+          <li><a href="about.html">大会概要</a></li>
+          <li><a href="greeting.html">大会長挨拶</a></li>
+          <li><a href="program.html">プログラム</a></li>
+          <li><a href="abstract.html">演題募集</a></li>
+          <li><a href="register.html">参加登録</a></li>
+          <li><a href="access.html">アクセス</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft">インフォメーション</div>
+        <ul>
+          <li><a href="sponsor.html">協賛・スポンサー</a></li>
+          <li><a href="news.html">お知らせ</a></li>
+          <li><a href="speaker.html">演者の方へ</a></li>
+          <li><a href="credit.html">認定単位</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+          <li><a href="privacy.html">プライバシーポリシー</a></li>
+          <li><a href="tokusho.html">特定商取引法に基づく表記</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">© 2026 The 72nd Annual Meeting of JSASEM. All rights reserved.</div>
+  </div>
+</footer>
+<script src="assets/register-config.js?v=20261106"></script>
+<script src="assets/register-form.js?v=20261106"></script>
+<script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お申し込みの完了 ｜ 第72回 日本宇宙航空環境医学会大会</title>
+<meta name="description" content="第72回 日本宇宙航空環境医学会大会の参加登録のお申し込みが完了しました。">
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="styles.css?v=20261106">
+</head>
+<body>
+
+<header class="header header--solid" id="header">
+  <div class="wrap">
+    <a href="index.html" class="brand"><span class="brand-text"><span class="brand-wm">JSASEM <b>72</b></span><span class="brand-tag">SPACEPORT OITA · 2026</span></span></a>
+    <nav class="nav" id="nav">
+      <a href="about.html">大会概要</a>
+      <a href="greeting.html">大会長挨拶</a>
+      <a href="program.html">プログラム</a>
+      <a href="abstract.html">演題募集</a>
+      <a href="register.html">参加登録</a>
+      <a href="access.html">アクセス</a>
+      <a href="sponsor.html">協賛</a>
+      <a href="news.html">お知らせ</a>
+      <a href="contact.html">お問い合わせ</a>
+    </nav>
+    <a href="register.html" class="header-cta">参加登録</a>
+    <button class="burger" id="burger" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="subhero">
+  <div class="wrap">
+    <span class="en">Registration</span>
+    <h1>お申し込みありがとうございました</h1>
+    <nav class="breadcrumb"><a href="index.html">ホーム</a><span>›</span><a href="register.html">参加登録</a><span>›</span>お申し込みの完了</nav>
+  </div>
+</section>
+
+<main class="page">
+  <div class="wrap">
+    <!-- 2026-11-06：ゼウスの決済完了画面のリンク先（success_url）。学生（無料）の登録完了後もここへ移る（?free=1）。
+         登録番号は URL の id から表示するだけ（形式に合わないものは表示しない）。noindex。 -->
+    <div class="prose reg-result">
+      <h3 id="done-title">お支払いの手続きが完了しました</h3>
+      <p class="reg-result__id" id="done-id" hidden>登録番号：<b id="done-id-value"></b></p>
+      <div id="done-paid">
+        <p>参加登録のお申し込みと、クレジットカードでのお支払いが完了しました。ご登録のメールアドレスに、次の2通のメールが届きます。</p>
+        <ul>
+          <li>決済代行会社（株式会社ゼウス）からの「決済完了メール」</li>
+          <li>大会事務局からの「参加登録完了のお知らせ」（登録番号・QRコード入り）</li>
+        </ul>
+      </div>
+      <div id="done-free" hidden>
+        <p>参加登録が完了しました。ご登録のメールアドレスに、大会事務局から「参加登録完了のお知らせ」（登録番号・QRコード入り）をお送りしました。</p>
+        <p>学生の方は、大会当日、受付で学生証をご提示ください。</p>
+      </div>
+      <p>大会当日は、受付で「参加登録完了のお知らせ」のQRコード（スマートフォンの画面のままで構いません）をご提示ください。</p>
+      <p style="font-size:14px;color:var(--muted)">「参加登録完了のお知らせ」は通常、数分〜1時間ほどで届きます。3営業日を過ぎても届かない場合は、迷惑メールのフォルダもご確認のうえ、大会事務局（<a href="mailto:jsasem72.office@gmail.com">jsasem72.office@gmail.com</a>）までご連絡ください。</p>
+      <p style="margin-top:24px"><a class="btn btn--primary" href="index.html">大会ホームページへ</a>　<a class="btn btn--outline" href="program.html">プログラムを見る →</a></p>
+    </div>
+  </div>
+</main>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  var id = q.get('id') || '';
+  if (/^J72-[0-9]{4}-[A-Z0-9]{4}$/.test(id)) {
+    document.getElementById('done-id-value').textContent = id;
+    document.getElementById('done-id').hidden = false;
+  }
+  if (q.get('free') === '1') {
+    document.getElementById('done-title').textContent = '参加登録が完了しました';
+    document.getElementById('done-paid').hidden = true;
+    document.getElementById('done-free').hidden = false;
+  }
+})();
+</script>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <img class="footer-lockup" src="assets/logo-lockup-navy.svg" alt="JSASEM 72 ｜ Spaceport Oita 2026">
+        <a class="footer-host" href="http://jsasem.kenkyuukai.jp/" target="_blank" rel="noopener"><img src="assets/jsasem-logo-dark.svg" alt="日本宇宙航空環境医学会"><span>主催　一般社団法人 日本宇宙航空環境医学会</span></a>
+        <h4>第72回 日本宇宙航空環境医学会大会</h4>
+        <p class="en">The 72nd Annual Meeting of the Japan Society of Aerospace and Environmental Medicine</p>
+        <p style="margin-top:16px;font-size:14px">大会長：徳丸 治／実行委員長：中沼 寛明<br>Mail：jsasem72.office@gmail.com</p>
+      </div>
+      <div>
+        <div class="ft">サイトマップ</div>
+        <ul>
+          <li><a href="about.html">大会概要</a></li>
+          <li><a href="greeting.html">大会長挨拶</a></li>
+          <li><a href="program.html">プログラム</a></li>
+          <li><a href="abstract.html">演題募集</a></li>
+          <li><a href="register.html">参加登録</a></li>
+          <li><a href="access.html">アクセス</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="ft">インフォメーション</div>
+        <ul>
+          <li><a href="sponsor.html">協賛・スポンサー</a></li>
+          <li><a href="news.html">お知らせ</a></li>
+          <li><a href="speaker.html">演者の方へ</a></li>
+          <li><a href="credit.html">認定単位</a></li>
+          <li><a href="contact.html">お問い合わせ</a></li>
+          <li><a href="privacy.html">プライバシーポリシー</a></li>
+          <li><a href="tokusho.html">特定商取引法に基づく表記</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">© 2026 The 72nd Annual Meeting of JSASEM. All rights reserved.</div>
+  </div>
+</footer>
+<script src="main.js"></script>
+</body>
+</html>
