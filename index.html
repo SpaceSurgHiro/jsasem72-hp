@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="stylesheet" href="styles.css?v=20261006">
+<link rel="stylesheet" href="styles.css?v=20261116">
 </head>
 <body>
 
@@ -148,13 +148,16 @@
         <div class="desc">商業宇宙飛行の医学支援、特別シンポジウム「大分宇宙港の医学支援」、若手の会「物語から眼差す宇宙航空医学」、学生企画、自衛隊と航空医学、エアラインと航空医学、若手の会 有人与圧ローバーセッション、「漢方と宇宙」、症例検討会、閉会式</div>
         <a href="program.html" class="more">詳細を見る →</a>
       </div>
-      <div class="day">
-        <div class="tag">POST-DAY</div>
+      <!-- 2026-11-16：準備委員会（11/16）の決定により、12/6 の公開シンポジウムを大会の目玉の一つとして目立たせ、
+           チラシ（11/5 第6校）をポップアップで見られるようにした（data-poster → main.js）。 -->
+      <div class="day day--feature">
+        <div class="tag">POST-DAY<span class="day__badge">公開シンポジウム</span></div>
         <div class="date">12.06</div>
         <div class="dow">Sun</div>
-        <div class="h">大分空港ツアー・市民公開講座</div>
-        <div class="desc"><a href="excursion.html" style="color:var(--navy);text-decoration:underline">大分空港ツアー</a>（制限区域内から飛行機の離発着を見学）、市民公開講座「大分宇宙港〜地方から宇宙へ」（14:00〜16:30）講演・パネルディスカッション</div>
-        <a href="program.html" class="more">詳細を見る →</a>
+        <div class="h">公開シンポジウム「大分宇宙港〜地方から宇宙へ」</div>
+        <div class="desc">14:00〜16:30（市民公開講座・参加無料・事前申込不要）。基調講演「JAXA宇宙飛行士講演会」講師 星出 彰彦 氏、取組紹介、パネルディスカッション。午前は<a href="excursion.html" style="text-decoration:underline">大分空港ツアー</a></div>
+        <a href="assets/poster/symposium-1206.pdf" class="poster-link" data-poster><img src="assets/poster/symposium-1206-thumb.jpg" alt="12月6日 公開シンポジウム「大分宇宙港〜地方から宇宙へ」のポスター" width="520" height="736" loading="lazy"><span class="cap">ポスターを見る ▶</span></a>
+        <a href="program.html#public-lecture" class="more">詳細を見る →</a>
       </div>
     </div>
     <p class="center mt32" style="color:var(--muted);font-size:14px">※ プログラムは調整中のため、内容・登壇者は変更となる場合があります。</p>
@@ -250,6 +253,7 @@
       <div class="bar"></div>
     </div>
     <div class="news-list">
+      <div class="news-item"><span class="d">2026.11.16</span><span class="c">プログラム</span><span class="ttl"><a href="assets/poster/symposium-1206.pdf" data-poster style="color:var(--navy);text-decoration:underline">12月6日（日）公開シンポジウム（市民公開講座）「大分宇宙港〜地方から宇宙へ」のポスターを掲載しました</a>（基調講演：JAXA宇宙飛行士 星出 彰彦 氏／参加無料・事前申込不要）</span></div>
       <div class="news-item"><span class="d">2026.11.02</span><span class="c">エクスカーション</span><span class="ttl"><a href="excursion.html" style="color:var(--navy);text-decoration:underline">エクスカーション（12/6 大分空港ツアー）の参加募集を開始しました</a>（参加無料・定員40名・先着順／締切 11月27日（金）正午）</span></div>
       <div class="news-item"><span class="d">2026.09.18</span><span class="c">演題募集</span><span class="ttl">一般演題（ポスター発表）の募集期間を10月2日（金）まで延長しました</span></div>
       <div class="news-item"><span class="d">2026.08.25</span><span class="c">プログラム</span><span class="ttl">一般演題（ポスター発表）に土曜日のコアタイムを新設しました（討論時間を2倍に／ポスター表彰も実施予定）</span></div>
@@ -302,6 +306,6 @@
 </footer>
 
 
-<script src="main.js"></script>
+<script src="main.js?v=20261116"></script>
 </body>
 </html>

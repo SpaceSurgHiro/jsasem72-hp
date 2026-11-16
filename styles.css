@@ -447,3 +447,38 @@ img { display: block; max-width: 100%; }
 }
 @media (min-width: 901px) and (max-height: 820px) { .hero__host { bottom: 32px; } }
 @media (min-width: 901px) and (max-width: 1120px) { .hero__host .en { display: none; } }
+
+/* =========================================================
+   2026-11-16：12/6 公開シンポジウム（市民公開講座）のポスターをポップアップで表示
+   トリガー：[data-poster]（href はポスターの PDF。JS が使えないときは PDF が開く）
+   ========================================================= */
+.days--4 .day--feature { background: linear-gradient(160deg, var(--navy) 0%, #163e6e 100%); border: 2px solid var(--gold); color: #fff; box-shadow: 0 14px 36px rgba(11,37,69,.22); }
+.day--feature::before { height: 6px; }
+.day--feature .date, .day--feature .h { color: #fff; }
+.day--feature .dow, .day--feature .desc { color: rgba(255,255,255,.82); }
+.day--feature .desc a { color: var(--sky) !important; }
+.day--feature .more { color: var(--gold); }
+.day__badge { display: inline-block; margin-left: 8px; padding: 2px 9px; border-radius: 999px; background: var(--gold); color: var(--navy); font-size: 11px; font-weight: 800; letter-spacing: 1px; vertical-align: 2px; }
+.poster-link { display: block; margin: 16px 0 4px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,.35); position: relative; cursor: zoom-in; background: #000; }
+.poster-link img { display: block; width: 100%; height: auto; transition: transform .25s, opacity .25s; }
+.poster-link:hover img, .poster-link:focus-visible img { transform: scale(1.03); opacity: .9; }
+.poster-link .cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 8px 10px; background: rgba(11,37,69,.88); color: #fff; font-size: 13px; font-weight: 700; text-align: center; }
+.poster-btn { display: inline-flex; align-items: center; gap: 6px; margin-top: 10px; padding: 9px 16px; border-radius: 999px; background: var(--gold); color: var(--navy); font-weight: 800; font-size: 14px; text-decoration: none; border: 0; cursor: pointer; }
+.poster-btn:hover { filter: brightness(1.06); }
+.poster-inline { display: grid; grid-template-columns: 220px 1fr; gap: 24px; align-items: start; margin: 8px 0 18px; }
+.poster-inline .poster-link { margin: 0; border-color: var(--line); }
+@media (max-width: 640px) { .poster-inline { grid-template-columns: 1fr; } .poster-inline .poster-link { max-width: 260px; } }
+a.tt-poster { color: inherit; text-decoration: underline; text-decoration-color: var(--gold); text-underline-offset: 3px; }
+.tt-poster-btn { display: inline-block; margin-top: 6px; font-size: 12px; font-weight: 700; color: var(--navy); background: var(--gold); padding: 3px 10px; border-radius: 999px; text-decoration: none; }
+
+dialog.pmodal { margin: auto; padding: 0; border: 0; border-radius: 14px; width: min(780px, 94vw); max-height: 92vh; background: #0b1424; color: #fff; box-shadow: 0 30px 80px rgba(0,0,0,.5); overflow: hidden; }
+dialog.pmodal::backdrop { background: rgba(5,12,24,.78); }
+.pmodal__bar { display: flex; align-items: center; gap: 10px; padding: 10px 12px 10px 18px; background: var(--navy); border-bottom: 2px solid var(--gold); }
+.pmodal__ttl { flex: 1; font-weight: 700; font-size: 15px; line-height: 1.4; }
+.pmodal__pdf { color: var(--navy); background: var(--gold); padding: 6px 12px; border-radius: 999px; font-size: 13px; font-weight: 800; text-decoration: none; white-space: nowrap; }
+.pmodal__close { width: 38px; height: 38px; border-radius: 50%; border: 1px solid rgba(255,255,255,.4); background: transparent; color: #fff; font-size: 22px; line-height: 1; cursor: pointer; }
+.pmodal__close:hover { background: rgba(255,255,255,.12); }
+.pmodal__body { overflow-y: auto; max-height: calc(92vh - 62px); padding: 14px; display: grid; gap: 14px; }
+.pmodal__body img { display: block; width: 100%; height: auto; border-radius: 6px; background: #111; }
+.pmodal__note { font-size: 12px; color: rgba(255,255,255,.7); text-align: center; }
+@media (max-width: 640px) { .pmodal__ttl { font-size: 13px; } .pmodal__pdf { padding: 6px 10px; font-size: 12px; } .pmodal__body { padding: 8px; } }
