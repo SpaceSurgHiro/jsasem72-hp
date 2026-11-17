@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="JSASEM72受付">
+<meta name="theme-color" content="#0b2545">
+<title>受付アプリ｜第72回 日本宇宙航空環境医学会大会</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/checkin-icon-180.png">
+<!-- 2026-11-17：当日の受付用（iPad の Safari で使う）。大会事務局の Apps Script（register-config.js の endpoint）に、
+     合言葉（Apps Script のスクリプト プロパティ STAFF_KEY）つきで問い合わせる。このページ自体には個人情報を含まない。
+     QRコードの読み取りは jsQR（assets/vendor/jsQR.js、Apache-2.0）。サイトのどこからもリンクしない。 -->
+<style>
+:root { --navy:#0b2545; --navy2:#13315c; --gold:#f5a623; --ok:#1b7f3b; --ok-bg:#e7f6ec; --ng:#b3261e; --ng-bg:#fdecea; --warn:#9a6700; --warn-bg:#fff6dc; --line:#d8dee8; --muted:#5a6b80; --bg:#f3f5f9; }
+* { box-sizing:border-box }
+html,body { margin:0; height:100%; background:var(--bg); color:#111; font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif; -webkit-text-size-adjust:100% }
+button,input,select,textarea { font:inherit }
+.top { position:sticky; top:0; z-index:5; background:var(--navy); color:#fff; padding:calc(env(safe-area-inset-top) + 8px) 16px 0; }
+.top .row { display:flex; align-items:center; gap:12px; flex-wrap:wrap }
+.top h1 { font-size:17px; margin:0; font-weight:700; letter-spacing:.02em }
+.top h1 small { font-weight:400; opacity:.8; margin-left:6px; font-size:13px }
+.pill { font-size:12.5px; padding:4px 10px; border-radius:999px; background:rgba(255,255,255,.12); white-space:nowrap }
+.pill.warn { background:var(--gold); color:var(--navy); font-weight:700 }
+.pill.ng { background:#ffd7d3; color:var(--ng); font-weight:700 }
+.spacer { flex:1 }
+.iconbtn { background:transparent; border:1px solid rgba(255,255,255,.35); color:#fff; border-radius:10px; padding:6px 12px; font-size:14px }
+.tabs { display:flex; gap:4px; margin-top:8px; overflow-x:auto }
+.tabs button { flex:1; min-width:110px; border:0; background:transparent; color:rgba(255,255,255,.75); padding:12px 8px; font-size:16px; font-weight:700; border-bottom:4px solid transparent }
+.tabs button.on { color:#fff; border-bottom-color:var(--gold) }
+main { padding:16px; max-width:1280px; margin:0 auto }
+.view { display:none } .view.on { display:block }
+.grid2 { display:grid; grid-template-columns: minmax(300px, 1fr) minmax(340px, 1.15fr); gap:16px; align-items:start }
+@media (max-width: 900px) { .grid2 { grid-template-columns:1fr } .cam { aspect-ratio:auto; height:34vh } .result { min-height:0 } .result .idle { padding:40px 20px } }
+.box { background:#fff; border:1px solid var(--line); border-radius:16px; padding:16px }
+.cam { position:relative; width:100%; background:#000; border-radius:12px; overflow:hidden; aspect-ratio: 4/3 }
+.cam video { width:100%; height:100%; object-fit:cover; display:block }
+.cam .frame { position:absolute; inset:16% 22%; border:4px solid rgba(245,166,35,.9); border-radius:16px; box-shadow:0 0 0 2000px rgba(0,0,0,.25) }
+.cam .msg { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; color:#fff; text-align:center; padding:20px; font-size:16px; line-height:1.6 }
+.btnrow { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px }
+.btn { border:0; border-radius:12px; padding:12px 18px; font-size:16px; font-weight:700; background:var(--navy); color:#fff; min-height:48px }
+.btn.sub { background:#e8edf5; color:var(--navy) }
+.btn.gold { background:var(--gold); color:var(--navy) }
+.btn.ng { background:var(--ng) }
+.btn:disabled { opacity:.45 }
+.manual { display:flex; gap:8px; margin-top:12px }
+.manual input { flex:1; font-size:20px; padding:10px 12px; border:2px solid var(--line); border-radius:12px; text-transform:uppercase; letter-spacing:.05em; min-width:0 }
+.hint { color:var(--muted); font-size:13.5px; line-height:1.6; margin:8px 2px 0 }
+/* 結果のカード */
+.result { min-height:420px }
+.result .idle { color:var(--muted); text-align:center; padding:90px 20px; font-size:18px; line-height:1.8 }
+.banner { border-radius:12px; padding:14px 16px; font-size:26px; font-weight:800; display:flex; align-items:center; gap:12px }
+.banner small { font-size:15px; font-weight:700; opacity:.9 }
+.banner.ok { background:var(--ok-bg); color:var(--ok); border:2px solid var(--ok) }
+.banner.ng { background:var(--ng-bg); color:var(--ng); border:2px solid var(--ng) }
+.banner.warn { background:var(--warn-bg); color:var(--warn); border:2px solid #e3b341 }
+.who { margin:16px 4px 6px }
+.who .kana { color:var(--muted); font-size:15px }
+.who .name { font-size:34px; font-weight:800; line-height:1.25; word-break:break-all }
+.who .aff { font-size:17px; margin-top:4px; word-break:break-all }
+.chips { display:flex; flex-wrap:wrap; gap:8px; margin:12px 4px }
+.chip { border-radius:999px; padding:6px 14px; font-size:15px; font-weight:700; background:#eef1f6; color:var(--navy) }
+.chip.cat { background:var(--navy); color:#fff; font-size:18px }
+.chip.cat.student { background:#2f6f3e } .chip.cat.comed { background:#6b4fa0 } .chip.cat.non { background:#8a5a00 } .chip.cat.invite { background:#a0306a }
+.chip.kind { background:#fff4dc; color:#7a4b00 }
+.meta { display:grid; grid-template-columns: 110px 1fr; gap:6px 10px; font-size:15px; margin:8px 4px; }
+.meta dt { color:var(--muted) } .meta dd { margin:0; word-break:break-all }
+.cme { margin-top:14px; width:100%; display:flex; align-items:center; justify-content:center; gap:12px; border-radius:14px; padding:16px; font-size:20px; font-weight:800; border:3px solid var(--navy); background:#fff; color:var(--navy); min-height:64px }
+.cme .box2 { width:30px; height:30px; border:3px solid currentColor; border-radius:8px; display:inline-flex; align-items:center; justify-content:center; font-size:22px }
+.cme.on { background:var(--navy); color:#fff }
+.syncnote { font-size:13px; color:var(--muted); margin-top:8px; text-align:right }
+/* 検索 */
+.search input { width:100%; font-size:20px; padding:12px 14px; border:2px solid var(--line); border-radius:12px }
+.list { margin-top:10px; max-height:62vh; overflow:auto; border:1px solid var(--line); border-radius:12px; background:#fff }
+.item { display:flex; gap:10px; align-items:center; padding:12px 14px; border-bottom:1px solid #eef1f5; cursor:pointer }
+.item:last-child { border-bottom:0 }
+.item.sel { background:#eef4ff }
+.item .l { flex:1; min-width:0 }
+.item .n { font-size:18px; font-weight:700 } .item .s { font-size:13.5px; color:var(--muted); white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+.dot { font-size:12.5px; font-weight:700; padding:3px 8px; border-radius:999px; white-space:nowrap }
+.dot.ok { background:var(--ok-bg); color:var(--ok) } .dot.ng { background:var(--ng-bg); color:var(--ng) } .dot.in { background:#e3ecff; color:#1d4ed8 }
+/* 登録 */
+.seg { display:flex; gap:6px; flex-wrap:wrap }
+.seg button { flex:1; min-width:150px; border:2px solid var(--line); background:#fff; border-radius:12px; padding:12px; font-size:16px; font-weight:700; color:var(--navy) }
+.seg button.on { border-color:var(--navy); background:var(--navy); color:#fff }
+.form { display:grid; gap:12px; margin-top:14px }
+.form label { display:block; font-size:14px; color:var(--muted); margin-bottom:4px }
+.form input[type=text], .form input[type=email], .form input[type=tel], .form textarea { width:100%; font-size:18px; padding:10px 12px; border:2px solid var(--line); border-radius:10px }
+.cats { display:grid; grid-template-columns: repeat(auto-fit, minmax(170px,1fr)); gap:8px }
+.cats label { margin:0; border:2px solid var(--line); border-radius:12px; padding:12px; display:flex; gap:8px; align-items:center; font-size:16px; color:#111; background:#fff }
+.cats input { width:22px; height:22px }
+.checks label { display:flex; gap:10px; align-items:center; color:#111; font-size:17px; margin:4px 0 }
+.checks input { width:24px; height:24px }
+.req { color:var(--ng); font-size:12px; margin-left:4px }
+.fee { font-size:22px; font-weight:800; color:var(--navy) }
+.done { border:3px solid var(--ok); background:var(--ok-bg); border-radius:14px; padding:16px; margin-top:14px }
+.done .id { font-size:34px; font-weight:800; letter-spacing:.06em; color:var(--navy) }
+.err { color:var(--ng); font-weight:700; margin-top:8px; white-space:pre-wrap }
+/* 集計 */
+.stats { display:grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap:12px }
+.stat { background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px }
+.stat .k { color:var(--muted); font-size:14px } .stat .v { font-size:32px; font-weight:800; color:var(--navy) } .stat .s { font-size:13px; color:var(--muted) }
+table.t { width:100%; border-collapse:collapse; background:#fff; border-radius:12px; overflow:hidden; margin-top:12px; font-size:15px }
+table.t th, table.t td { border-bottom:1px solid #eef1f5; padding:8px 10px; text-align:left } table.t th { background:#f0f3f8 } table.t td.r { text-align:right }
+/* ログイン */
+.login { max-width:460px; margin:10vh auto; background:#fff; border:1px solid var(--line); border-radius:18px; padding:24px }
+.login h2 { margin:0 0 8px; color:var(--navy) }
+.login input { width:100%; font-size:24px; padding:12px; border:2px solid var(--line); border-radius:12px; text-transform:uppercase; letter-spacing:.12em; text-align:center; margin:12px 0 }
+.overlay { position:fixed; inset:0; background:rgba(5,12,24,.55); display:none; align-items:center; justify-content:center; z-index:20; padding:16px }
+.overlay.on { display:flex }
+.dialog { background:#fff; border-radius:18px; padding:20px; max-width:520px; width:100%; }
+.dialog h3 { margin:0 0 10px; color:var(--navy) }
+.dialog textarea, .dialog input { width:100%; font-size:17px; padding:10px; border:2px solid var(--line); border-radius:10px }
+.toast { position:fixed; left:50%; bottom:calc(env(safe-area-inset-bottom) + 18px); transform:translateX(-50%); background:#111; color:#fff; padding:12px 18px; border-radius:12px; font-size:15px; z-index:30; display:none; max-width:90vw }
+</style>
+</head>
+<body>
+
+<div id="login" class="login" hidden>
+  <h2>受付アプリ</h2>
+  <p style="margin:0;color:var(--muted);line-height:1.7">第72回 日本宇宙航空環境医学会大会。<br>大会事務局から伝えられた<b>合言葉</b>を入れてください（この iPad に記憶されます）。</p>
+  <input id="login-key" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="XXXX-XXXX-XXXX">
+  <button class="btn" id="login-go" style="width:100%">はじめる</button>
+  <div class="err" id="login-err"></div>
+</div>
+
+<div id="app" hidden>
+  <div class="top">
+    <div class="row">
+      <h1>JSASEM72 受付<small id="today"></small></h1>
+      <span class="pill" id="sync">名簿：—</span>
+      <span class="pill warn" id="queue" hidden></span>
+      <span class="spacer"></span>
+      <button class="iconbtn" id="reload">名簿を更新</button>
+      <button class="iconbtn" id="settings">設定</button>
+    </div>
+    <div class="tabs" role="tablist">
+      <button data-tab="scan" class="on">受付（QR）</button>
+      <button data-tab="search">検索</button>
+      <button data-tab="register">当日・振込の登録</button>
+      <button data-tab="stats">集計</button>
+    </div>
+  </div>
+
+  <main>
+    <!-- 受付（QR） -->
+    <section class="view on" id="v-scan">
+      <div class="grid2">
+        <div class="box">
+          <div class="cam"><video id="video" playsinline muted autoplay></video><div class="frame" id="frame" hidden></div><div class="msg" id="cam-msg">「カメラを開始」を押してください</div></div>
+          <div class="btnrow">
+            <button class="btn" id="cam-start">カメラを開始</button>
+            <button class="btn sub" id="cam-flip" disabled>前／後のカメラ</button>
+            <button class="btn sub" id="cam-stop" disabled>止める</button>
+          </div>
+          <form class="manual" id="manual">
+            <input id="manual-id" type="text" inputmode="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="登録番号 J72-0000-XXXX">
+            <button class="btn">確認</button>
+          </form>
+          <p class="hint">QRコードが読めないときは、登録番号を入れるか「検索」でお名前から探してください。<br>外付けのQRスキャナーは、上の欄を選んでから読み取ります。</p>
+        </div>
+        <div class="box result" id="scan-result"><div class="idle">参加証またはメールの<br>QRコードをカメラにかざしてください</div></div>
+      </div>
+    </section>
+
+    <!-- 検索 -->
+    <section class="view" id="v-search">
+      <div class="grid2">
+        <div class="box search">
+          <input id="q" type="search" placeholder="お名前・ふりがな・ご所属・登録番号・メール" autocomplete="off">
+          <div class="btnrow" style="margin-top:8px">
+            <button class="btn sub" data-filter="all">すべて</button>
+            <button class="btn sub" data-filter="notyet">本日まだ</button>
+            <button class="btn sub" data-filter="ng">支払い未確認</button>
+            <button class="btn sub" data-filter="cme">認定医 ✓</button>
+          </div>
+          <div class="list" id="list"></div>
+          <p class="hint" id="list-count"></p>
+        </div>
+        <div class="box result" id="search-result"><div class="idle">左の一覧から選んでください</div></div>
+      </div>
+    </section>
+
+    <!-- 当日・振込の登録 -->
+    <section class="view" id="v-register">
+      <div class="box">
+        <div class="seg" id="kind">
+          <button data-kind="onsite" class="on">当日受付（現金）</button>
+          <button data-kind="transfer">振込を確認した方</button>
+          <button data-kind="invite">招待</button>
+        </div>
+        <p class="hint" id="kind-hint"></p>
+        <form class="form" id="reg-form" autocomplete="off">
+          <div id="cat-row">
+            <label>参加区分<span class="req">必須</span></label>
+            <div class="cats" id="cats"></div>
+          </div>
+          <div><label>お名前<span class="req">必須</span></label><input type="text" name="name" maxlength="40"></div>
+          <div><label>ふりがな</label><input type="text" name="kana" maxlength="40"></div>
+          <div><label>ご所属<span class="req">必須</span></label><input type="text" name="affiliation" maxlength="80"></div>
+          <div><label id="email-label">メールアドレス</label><input type="email" name="email" maxlength="50" autocapitalize="off"></div>
+          <div><label>領収書の宛名（お名前と違う場合）</label><input type="text" name="receiptName" maxlength="60"></div>
+          <div><label>電話番号</label><input type="tel" name="phone" maxlength="20"></div>
+          <div class="checks">
+            <label><input type="checkbox" name="cme"> 宇宙航空医学認定医（更新単位の対象）</label>
+            <label><input type="checkbox" name="sendMail"> 参加証（領収書を兼ねる PDF）をメールで送る</label>
+          </div>
+          <div><label>受付メモ（任意）</label><input type="text" name="staffMemo" maxlength="120"></div>
+          <div class="fee" id="fee-line"></div>
+          <button class="btn gold" id="reg-go" style="font-size:18px">登録する</button>
+          <div class="err" id="reg-err"></div>
+        </form>
+        <div id="reg-done"></div>
+      </div>
+    </section>
+
+    <!-- 集計 -->
+    <section class="view" id="v-stats">
+      <div class="stats" id="stats"></div>
+      <div id="stats-table"></div>
+      <p class="hint">数は、この iPad が最後に名簿を受け取った時点のものです（「名簿を更新」で最新になります）。</p>
+    </section>
+  </main>
+</div>
+
+<div class="overlay" id="force-dlg">
+  <div class="dialog">
+    <h3>支払いが確認できない方を受け付ける</h3>
+    <p style="line-height:1.7;margin:0 0 10px">振込の控えやメールの画面などで確認できた場合だけ、理由を書いて受け付けてください。理由はスプレッドシートの「受付メモ」に残ります。</p>
+    <input id="force-reason" type="text" maxlength="60" placeholder="例：振込の控えを確認">
+    <div class="btnrow"><button class="btn ng" id="force-go">受け付ける</button><button class="btn sub" id="force-cancel">やめる</button></div>
+  </div>
+</div>
+
+<div class="overlay" id="set-dlg">
+  <div class="dialog">
+    <h3>設定</h3>
+    <div class="checks">
+      <label><input type="checkbox" id="opt-sound" checked> 読み取りのとき音を鳴らす</label>
+      <label><input type="checkbox" id="opt-front"> はじめから前面（画面側）のカメラを使う</label>
+    </div>
+    <p class="hint">「この iPad から消す」は、合言葉と、この iPad に保存した名簿を消します。大会が終わったら押してください。</p>
+    <div class="btnrow"><button class="btn sub" id="set-close">閉じる</button><button class="btn ng" id="logout">この iPad から消す</button></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="assets/register-config.js?v=20261117"></script>
+<script src="assets/vendor/jsQR.js"></script>
+<script src="assets/checkin.js?v=20261117"></script>
+</body>
+</html>
