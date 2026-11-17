@@ -10,5 +10,5 @@
      認証キーは Apps Script の「スクリプト プロパティ」にだけ保存します。 */
 window.JSASEM72_REG = {
   endpoint: 'https://script.google.com/macros/s/AKfycbyfYq7sOpX36j_9ww-RM02lWMdIj37Dh-NLJyxfvUPvwrcUcg9Yab7es5z6GrznLV-O/exec',
-  test: true
+  test: false
 };
