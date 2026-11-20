@@ -85,3 +85,49 @@ if (new Date() >= excursionOpen) {
   triggers.forEach(a => a.addEventListener('click', e => { e.preventDefault(); open(a); }));
   if (location.hash === '#symposium-poster') open(null);
 })();
+
+// ---------------------------------------------------------------------------
+// 協賛企業・団体の広告（sponsor.html #ads）
+// [data-ad] に画像のパスを「|」区切りで書く（複数ページの広告は縦に並べる）。data-ad-title が見出し。
+// dialog が使えないブラウザでは、リンク（href の画像）がそのまま開く。
+(function () {
+  const triggers = document.querySelectorAll('[data-ad]');
+  if (!triggers.length || typeof HTMLDialogElement !== 'function') return;
+  let dlg = null, lastFocus = null;
+  function build() {
+    dlg = document.createElement('dialog');
+    dlg.className = 'pmodal';
+    dlg.innerHTML =
+      '<div class="pmodal__bar"><div class="pmodal__ttl"></div>' +
+      '<button type="button" class="pmodal__close" aria-label="閉じる">×</button></div>' +
+      '<div class="pmodal__body"></div>';
+    document.body.appendChild(dlg);
+    dlg.querySelector('.pmodal__close').addEventListener('click', () => dlg.close());
+    dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+    dlg.addEventListener('close', () => {
+      document.documentElement.style.overflow = '';
+      if (lastFocus) lastFocus.focus();
+    });
+  }
+  function open(a) {
+    if (!dlg) build();
+    lastFocus = a;
+    const title = a.getAttribute('data-ad-title') || '広告';
+    dlg.setAttribute('aria-label', title + 'の広告');
+    dlg.querySelector('.pmodal__ttl').textContent = title;
+    const body = dlg.querySelector('.pmodal__body');
+    body.textContent = '';
+    a.getAttribute('data-ad').split('|').forEach((src, i, all) => {
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = title + 'の広告' + (all.length > 1 ? '（' + (i + 1) + 'ページ目）' : '');
+      img.width = 1240; img.height = 1754;
+      body.appendChild(img);
+    });
+    document.documentElement.style.overflow = 'hidden';
+    dlg.showModal();
+    body.scrollTop = 0;
+    dlg.querySelector('.pmodal__close').focus();
+  }
+  triggers.forEach(a => a.addEventListener('click', e => { e.preventDefault(); open(a); }));
+})();

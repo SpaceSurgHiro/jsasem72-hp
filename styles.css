@@ -482,3 +482,12 @@ dialog.pmodal::backdrop { background: rgba(5,12,24,.78); }
 .pmodal__body img { display: block; width: 100%; height: auto; border-radius: 6px; background: #111; }
 .pmodal__note { font-size: 12px; color: rgba(255,255,255,.7); text-align: center; }
 @media (max-width: 640px) { .pmodal__ttl { font-size: 13px; } .pmodal__pdf { padding: 6px 10px; font-size: 12px; } .pmodal__body { padding: 8px; } }
+
+/* 協賛企業・団体の広告（sponsor.html #ads）。[data-ad] を押すとポップアップ（main.js、.pmodal を共用） */
+.ad-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; margin: 8px 0 36px; }
+.ad-card { display: flex; flex-direction: column; gap: 8px; padding: 10px; border: 1px solid #dfe5ee; border-radius: 10px; background: #fff; text-decoration: none; color: var(--navy); cursor: zoom-in; transition: box-shadow .2s, transform .2s; }
+.ad-card:hover, .ad-card:focus-visible { box-shadow: 0 6px 18px rgba(13,35,64,.12); transform: translateY(-2px); }
+.ad-thumbs { display: flex; gap: 4px; }
+.ad-thumbs img { flex: 1 1 0; min-width: 0; width: 100%; height: auto; border-radius: 4px; background: #eef2f7; }
+.ad-nm { font-size: 13px; font-weight: 700; line-height: 1.45; text-align: center; }
+@media (min-width: 640px) { .ad-card--wide { grid-column: span 2; } }
